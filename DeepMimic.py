@@ -1,6 +1,7 @@
 import numpy as np
 import sys
 import random
+import time
 
 from OpenGL.GL import *
 from OpenGL.GLUT import *
@@ -41,7 +42,7 @@ def build_arg_parser(args):
     arg_file = arg_parser.parse_string('arg_file', '')
     if (arg_file != ''):
         succ = arg_parser.load_file(arg_file)
-        assert succ, Logger.print('Failed to load args from: ' + arg_file)
+        assert succ, Logger.print2('Failed to load args from: ' + arg_file)
 
     rand_seed_key = 'rand_seed'
     if (arg_parser.has_key(rand_seed_key)):
@@ -142,7 +143,7 @@ def calc_display_anim_time(num_timestes):
 def shutdown():
     global world
 
-    Logger.print('Shutting down...')
+    Logger.print2('Shutting down...')
     world.shutdown()
     sys.exit(0)
     return
@@ -220,9 +221,9 @@ def toggle_training():
 
     world.enable_training = not world.enable_training
     if (world.enable_training):
-        Logger.print('Training enabled')
+        Logger.print2('Training enabled')
     else:
-        Logger.print('Training disabled')
+        Logger.print2('Training disabled')
     return
 
 def keyboard(key, x, y):
@@ -305,8 +306,10 @@ def main():
 
     # Command line arguments
     args = sys.argv[1:]
-
+    print("init_draw")
     init_draw()
+    print("end init_draw")
+
     reload()
     setup_draw()
     draw_main_loop()

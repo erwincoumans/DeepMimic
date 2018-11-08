@@ -1,6 +1,5 @@
 #pragma once
-
-#include <GL/glew.h>
+#include "OpenGLWindow/OpenGLInclude.h"
 #include "render/RenderState.h"
 #include <string.h>
 

@@ -88,9 +88,9 @@ void cTextureUtil::CreateFrameBuffer(GLuint& buffer_obj, GLuint& texture, GLuint
 
 void cTextureUtil::DeleteFrameBuffer(GLuint& buffer_obj, GLuint& texture, GLuint& depth_stencil)
 {
-	glDeleteRenderbuffersEXT(1, &depth_stencil);
+	glDeleteRenderbuffers(1, &depth_stencil);
 	glDeleteTextures(1, &texture);
-	glDeleteFramebuffersEXT(1, &buffer_obj);
+	glDeleteFramebuffers(1, &buffer_obj);
 }
 
 tVector cTextureUtil::ReadTexel(int x, int y, int w, int h, const std::vector<GLfloat>& data)

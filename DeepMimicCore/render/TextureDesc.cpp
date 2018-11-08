@@ -1,6 +1,7 @@
 #include "TextureDesc.h"
 #include <assert.h>
 #include "lodepng/lodepng.h"
+#include "OpenGLWindow/OpenGLInclude.h"
 
 std::stack<cTextureDesc::tTexEntry> cTextureDesc::gTexStack = std::stack<cTextureDesc::tTexEntry>();
 
@@ -95,8 +96,8 @@ cTextureDesc::cTextureDesc(const std::string& filename, bool gen_mips) : cTextur
 			glGenerateMipmap(GL_TEXTURE_2D);
 			
 			GLfloat max_aniso = 1.f;
-			glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &max_aniso);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, max_aniso);
+			glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY, &max_aniso);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY, max_aniso);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		}
@@ -141,7 +142,7 @@ bool cTextureDesc::CheckBoundBuffer() const
 void cTextureDesc::BindBuffer3DSlice(int slice) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, mObject);
-	glFramebufferTexture3DEXT(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, 
+	glFramebufferTexture3D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, 
 							GL_TEXTURE_3D, mObject, 0, slice);
 	glViewport(0, 0, mWidth, mHeight);
 	PushTextureStack();

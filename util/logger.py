@@ -18,7 +18,7 @@ A['EpRewMean']
 import os.path as osp, shutil, time, atexit, os, subprocess
 
 class Logger:
-    def print(str):
+    def print2(str):
         if (MPIUtil.is_root_proc()):
             print(str)
         return
@@ -58,7 +58,7 @@ class Logger:
             assert osp.exists(output_path)
             atexit.register(self.output_file.close)
 
-            Logger.print("Logging data to " + self.output_file.name)
+            Logger.print2("Logging data to " + self.output_file.name)
         return
 
     def log_tabular(self, key, val):
@@ -82,7 +82,7 @@ class Logger:
         """
         if (MPIUtil.is_root_proc()):
             vals = []
-            Logger.print("-"*37)
+            Logger.print2("-"*37)
             for key in self.log_headers:
                 val = self.log_current_row.get(key, "")
                 if isinstance(val, float):
@@ -91,9 +91,9 @@ class Logger:
                     valstr = str(val)
                 else: 
                     valstr = val
-                Logger.print("| %15s | %15s |"%(key, valstr))
+                Logger.print2("| %15s | %15s |"%(key, valstr))
                 vals.append(val)
-            Logger.print("-" * 37)
+            Logger.print2("-" * 37)
         return
 
     def dump_tabular(self):

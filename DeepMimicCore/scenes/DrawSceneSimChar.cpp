@@ -69,6 +69,7 @@ const std::shared_ptr<cSceneSimChar>& cDrawSceneSimChar::GetScene() const
 
 void cDrawSceneSimChar::MouseClick(int button, int state, double x, double y)
 {
+#if 0
 	const double ray_max_dist = 1000;
 	cDrawScene::MouseClick(button, state, x, y);
 
@@ -91,6 +92,7 @@ void cDrawSceneSimChar::MouseClick(int button, int state, double x, double y)
 			ResetUI();
 		}
 	}
+#endif
 }
 
 void cDrawSceneSimChar::MouseMove(double x, double y)

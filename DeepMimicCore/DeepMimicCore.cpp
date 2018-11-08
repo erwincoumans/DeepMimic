@@ -45,6 +45,7 @@ void cDeepMimicCore::ParseArgs(const std::vector<std::string>& args)
 
 void cDeepMimicCore::Init()
 {
+	printf("cDeepMimicCore::Init()\n");
 	if (EnableDraw())
 	{
 		cDrawUtil::InitDrawUtil();
@@ -119,7 +120,6 @@ void cDeepMimicCore::Reshape(int w, int h)
 	mScene->Reshape(w, h);
 	mDefaultFrameBuffer->Reshape(w, h);
 	glViewport(0, 0, w, h);
-	glutPostRedisplay();
 }
 
 void cDeepMimicCore::Shutdown()
@@ -571,7 +571,7 @@ void cDeepMimicCore::ClearScene()
 
 int cDeepMimicCore::GetCurrTime() const
 {
-	return glutGet(GLUT_ELAPSED_TIME);
+	return 1;//glutGet(GLUT_ELAPSED_TIME);
 }
 
 void cDeepMimicCore::InitFrameBuffer()

@@ -6,6 +6,27 @@
 
 #include "render/DrawUtil.h"
 #include "render/TextureDesc.h"
+#include "OpenGLWindow/SimpleOpenGL3App.h"
+#include "OpenGLWindow/b3Clock.h"
+
+static SimpleOpenGL3App* s_app=0;
+static b3Clock s_clock;
+
+static b3WheelCallback sOldWheelCB = 0;
+static b3ResizeCallback sOldResizeCB = 0;
+static b3MouseMoveCallback sOldMouseMoveCB = 0;
+static b3MouseButtonCallback sOldMouseButtonCB = 0;
+static b3KeyboardCallback sOldKeyboardCB = 0;
+//static b3RenderCallback sOldRenderCB = 0;
+
+static float gWidth = 1024;
+static float gHeight = 768;
+
+void MyWheelCallback2(float deltax, float deltay)
+{
+        if (sOldWheelCB)
+                sOldWheelCB(deltax, deltay);
+}
 
 // Dimensions of the window we are drawing into.
 int gWinWidth = 800;
@@ -144,7 +165,6 @@ void Draw(void)
 	UpdateFrameBuffer();
 	gCore->Draw();
 	
-	glutSwapBuffers();
 	gReshaping = false;
 }
 
@@ -157,14 +177,22 @@ void Reshape(int w, int h)
 	
 	gDefaultFrameBuffer->Reshape(w, h);
 	glViewport(0, 0, gWinWidth, gWinHeight);
-	glutPostRedisplay();
+}
+
+void MyResizeCallback2(float width, float height)
+{       
+        gWidth = width;
+        gHeight = height;
+
+        if (sOldResizeCB)
+                sOldResizeCB(width, height);
+	Reshape((int)width, (int)height);
 }
 
 void StepAnim(double time_step)
 {
 	Update(time_step);
 	gAnimating = false;
-	glutPostRedisplay();
 }
 
 void Reload()
@@ -203,7 +231,7 @@ void Shutdown()
 
 int GetCurrTime()
 {
-	return glutGet(GLUT_ELAPSED_TIME);
+	return s_clock.getTimeMilliseconds();
 }
 
 void InitTime()
@@ -212,7 +240,7 @@ void InitTime()
 	gUpdatesPerSec = 0;
 }
 
-void Animate(int callback_val)
+void Animate()
 {
 	const double counter_decay = 0;
 
@@ -242,8 +270,6 @@ void Animate(int callback_val)
 		timer_step -= update_dur;
 		timer_step = std::max(timer_step, 0);
 		
-		glutTimerFunc(timer_step, Animate, 0);
-		glutPostRedisplay();
 	}
 
 	if (gCore->IsDone())
@@ -255,10 +281,6 @@ void Animate(int callback_val)
 void ToggleAnimate()
 {
 	gAnimating = !gAnimating;
-	if (gAnimating)
-	{
-		glutTimerFunc(gDisplayAnimTime, Animate, 0);
-	}
 }
 
 void ChangePlaybackSpeed(double delta)
@@ -267,10 +289,6 @@ void ChangePlaybackSpeed(double delta)
 	gPlaybackSpeed += delta;
 	gCore->SetPlaybackSpeed(gPlaybackSpeed);
 
-	if (std::abs(prev_playback) < 0.0001 && std::abs(gPlaybackSpeed) > 0.0001)
-	{
-		glutTimerFunc(gDisplayAnimTime, Animate, 0);
-	}
 }
 
 void Keyboard(unsigned char key, int x, int y) 
@@ -309,19 +327,16 @@ void Keyboard(unsigned char key, int x, int y)
 		break;
 	}
 
-	glutPostRedisplay();
 }
 
 void MouseClick(int button, int state, int x, int y)
 {
 	gCore->MouseClick(button, state, x, y);
-	glutPostRedisplay();
 }
 
 void MouseMove(int x, int y)
 {
 	gCore->MouseMove(x, y);
-	glutPostRedisplay();
 }
 
 void InitFrameBuffers(void)
@@ -331,35 +346,53 @@ void InitFrameBuffers(void)
 
 void InitDraw(int argc, char** argv)
 {
-	glutInit(&argc, argv);
-
-	glutInitContextVersion(3, 2);
-	glutInitContextFlags(GLUT_FORWARD_COMPATIBLE);
-	glutInitContextProfile(GLUT_CORE_PROFILE);
-
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitWindowSize(gWinWidth, gWinHeight);
-	glutCreateWindow("DeepMimic");
+	printf("InitDraw!\n");
+	s_app = new SimpleOpenGL3App("DeepMimic", gWinWidth, gWinHeight);
+	printf("Finished InitDraw\n");
 }
 
 void SetupDraw()
 {
-	glutDisplayFunc(Draw);
-	glutReshapeFunc(Reshape);
-	glutKeyboardFunc(Keyboard);
-	glutMouseFunc(MouseClick);
-	glutMotionFunc(MouseMove);
-	glutTimerFunc(gDisplayAnimTime, Animate, 0);
+
+#if 0
+        s_app->m_renderer->getActiveCamera()->setCameraDistance(13);
+        s_app->m_renderer->getActiveCamera()->setCameraPitch(0);
+        s_app->m_renderer->getActiveCamera()->setCameraTargetPosition(0, 0, 0);
+        sOldKeyboardCB = s_app->m_window->getKeyboardCallback();
+        s_app->m_window->setKeyboardCallback(MyKeyboardCallback2);
+        sOldMouseMoveCB = app->m_window->getMouseMoveCallback();
+        s_app->m_window->setMouseMoveCallback(MyMouseMoveCallback2);
+        sOldMouseButtonCB = s_app->m_window->getMouseButtonCallback();
+        s_app->m_window->setMouseButtonCallback(MyMouseButtonCallback2);
+        sOldWheelCB = s_app->m_window->getWheelCallback();
+        s_app->m_window->setWheelCallback(MyWheelCallback2);
+#endif
+        sOldResizeCB = s_app->m_window->getResizeCallback();
+        s_app->m_window->setResizeCallback(MyResizeCallback2);
+
+//	glutDisplayFunc(Draw);
+//	glutReshapeFunc(Reshape);
+//	glutKeyboardFunc(Keyboard);
+//	glutMouseFunc(MouseClick);
+//	glutMotionFunc(MouseMove);
+//	glutTimerFunc(gDisplayAnimTime, Animate, 0);
 
 	InitFrameBuffers();
-	Reshape(gWinWidth, gWinHeight);
+//	Reshape(gWinWidth, gWinHeight);
 	gCore->Reshape(gWinWidth, gWinHeight);
 }
 
 void DrawMainLoop()
 {
 	InitTime();
-	glutMainLoop();
+
+	do
+	{
+		Animate();
+		Draw();
+		s_app->swapBuffer();
+	} while (!s_app->m_window->requestedExit());
+
 }
 
 int main(int argc, char** argv)
@@ -371,6 +404,8 @@ int main(int argc, char** argv)
 	SetupDraw();
 
 	DrawMainLoop();
+
+	delete s_app;
 
 	return EXIT_SUCCESS;
 }
