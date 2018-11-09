@@ -1,8 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
-#include <GL/glew.h>
-#include <GL/freeglut.h>
+#include "OpenGLWindow/OpenGLInclude.h"
 #include <fstream>
 
 #include "util/MathUtil.h"

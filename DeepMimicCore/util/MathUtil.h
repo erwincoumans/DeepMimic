@@ -4,6 +4,7 @@
 
 #include "Eigen/Dense"
 #include "Eigen/StdVector"
+#include "Eigen/Geometry"
 #include "Rand.h"
 #define _USE_MATH_DEFINES
 #include "math.h"

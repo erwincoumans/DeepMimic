@@ -34,7 +34,7 @@ To install the python dependencies, run
 ```
 pip install -r requirements.txt
 ```
-Note that MPI must be installed before MPI4Py.
+Note that MPI must be installed before MPI4Py. When building Bullet, be sure to disable double precision with the build flag `USE_DOUBLE_PRECISION=OFF`.
 
 ### Windows
 The wrapper is built using `DeepMimicCore.sln`.
@@ -128,7 +128,7 @@ python DeepMimic.py --arg_file args/kin_char_args.txt
 ```
 
 The motion files follow the JSON format. The `"Loop"` field specifies whether or not the motion is cyclic.
-`"wrap"` specifices a cyclic motion that will wrap back to the start at the end, while `"none"` specifies an
+`"wrap"` specifies a cyclic motion that will wrap back to the start at the end, while `"none"` specifies an
 acyclic motion that will stop once it reaches the end of the motion. Each vector in the `"Frames"` list
 specifies a keyframe in the motion. Each frame has the following format:
 ```

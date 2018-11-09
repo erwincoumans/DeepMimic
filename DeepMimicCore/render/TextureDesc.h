@@ -2,9 +2,7 @@
 
 #include <vector>
 #include <stack>
-#include <GL/glew.h>
-#include <GL/freeglut.h>
-
+#include "OpenGLWindow/OpenGLInclude.h"
 #include "TextureUtil.h"
 
 class cTextureDesc

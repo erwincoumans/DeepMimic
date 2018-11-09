@@ -2,22 +2,28 @@ BIN=Main
 OBJ_DIR = objs
 MKDIR = mkdir -p
 
-EIGEN_DIR = ../../libraries/eigen
-BULLET_INC_DIR = ../../libraries/bullet3/src
+EIGEN_DIR = /usr/local/include/eigen3
+#../../libraries/eigen
+BULLET_INC_DIR = /usr/local/include/bullet
+#../../libraries/bullet3/src
 
-PYTHON_INC = /usr/include/python3.6m
-PYTHON_LIB = -lpython3.6m
+PYTHON_INC = /usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/include/python3.7m
+PYTHON_LIB = /usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib -lpython3.7m
+#/usr/lib/ -lpython3.6m
 
 INC = -I./ \
+        -IOpenGLWindow/glad \
 	-I$(EIGEN_DIR) \
 	-I$(BULLET_INC_DIR)
 
-LIBS = -lGLEW -lGL -lGLU -lglut -lBulletDynamics -lBulletCollision -lLinearMath
+LIBS =  -L. -lOpenGL_Window_gmake_x64_release -lBullet3Common_gmake_x64_release -framework OpenGL -framework Cocoa -lglut -lBulletDynamics -lBulletCollision -lLinearMath
 
 CC = clang++
 CFLAGS = -std=c++11 -O3 -Wall -fPIC 
 
 SRC_DIRS = util/ \
+        OpenGLWindow/ \
+        OpenGLWindow/glad \
 	util/json/ \
 	anim/ \
 	sim/ \
@@ -28,7 +34,7 @@ SRC_DIRS = util/ \
 	scenes/particle/ \
 	scenes/pendulum/
 
-SRC_FILES = $(BIN).cpp DeepMimicCore.cpp $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)*.cpp))
+SRC_FILES = $(BIN).cpp DeepMimicCore.cpp  $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)*.cpp))
 OUT_DIRS = $(addprefix $(OBJ_DIR)/, $(SRC_DIRS))
 OBJ = $(addprefix $(OBJ_DIR)/, $(patsubst %.cpp, %.o, $(SRC_FILES)))
 

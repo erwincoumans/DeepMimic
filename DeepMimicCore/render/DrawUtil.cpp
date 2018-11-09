@@ -1,6 +1,5 @@
 #include "DrawUtil.h"
-#include <GL/glew.h>
-#include <GL/freeglut.h>
+#include "OpenGLWindow/OpenGLInclude.h"
 
 tVector cDrawUtil::gColor = tVector::Ones();
 cShader cDrawUtil::gDefaultProg = cShader();
@@ -40,24 +39,17 @@ bool cDrawUtil::EnableDraw()
 	return gEnableDraw;
 }
 
-void cDrawUtil::InitOffscreenDrawContext()
-{
-	int argc = 0;
-	glutInit(&argc, nullptr);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitWindowSize(1, 1);
-	glutCreateWindow("DeepMimic");
-}
 
 bool cDrawUtil::CheckDrawContextInit()
 {
-	int state = glutGet(GLUT_INIT_STATE);
+	int state = 1;//glutGet(GLUT_INIT_STATE);
 	return state == 1;
 }
 
 void cDrawUtil::InitDrawUtil()
 {
-	glewInit();
+
+	gladLoaderLoadGL();
 
 	const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
 	const GLubyte* version = glGetString(GL_VERSION); // version as a string
