@@ -5,6 +5,8 @@
 #include "Eigen/Dense"
 #include "Eigen/StdVector"
 #include "Rand.h"
+#define _USE_MATH_DEFINES
+#include "math.h"
 
 const int gInvalidIdx = -1;
 

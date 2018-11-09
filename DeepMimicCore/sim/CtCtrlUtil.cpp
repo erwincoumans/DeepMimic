@@ -1,7 +1,8 @@
 #include "CtCtrlUtil.h"
 #include <limits>
 #include "anim/KinTree.h"
-
+#define _USE_MATH_DEFINES
+#include "math.h"
 const double gDefaultOffsetPDBound = 10;
 const double gDefaultRotatePDBound = M_PI;
 

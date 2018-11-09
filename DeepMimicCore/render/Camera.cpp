@@ -3,6 +3,8 @@
 
 #include "render/DrawUtil.h"
 #include <GL/freeglut.h>
+#define _USE_MATH_DEFINES
+#include "math.h"
 
 cCamera::cCamera()
 {
