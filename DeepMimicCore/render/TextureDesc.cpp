@@ -88,7 +88,9 @@ cTextureDesc::cTextureDesc(const std::string& filename, bool gen_mips) : cTextur
 
 		glGenTextures(1, &mTexture);
 		glBindTexture(GL_TEXTURE_2D, mTexture);
-		glTexStorage2D(GL_TEXTURE_2D, num_mipmaps, mChannels, mWidth, mHeight);
+		//glTexStorage2D(GL_TEXTURE_2D, num_mipmaps, mChannels, mWidth, mHeight);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, mWidth, mHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, image.data());
+
 		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mWidth, mHeight, mFormat, mType, image.data());
 
 		if (gen_mips)

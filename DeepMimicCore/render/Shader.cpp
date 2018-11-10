@@ -206,7 +206,11 @@ void cShader::SetUniformMat(GLuint handle, const tMatrix& data) const
 		static_cast<float>(data(0, 1)), static_cast<float>(data(1, 1)), static_cast<float>(data(2, 1)), static_cast<float>(data(3, 1)),
 		static_cast<float>(data(0, 2)), static_cast<float>(data(1, 2)), static_cast<float>(data(2, 2)), static_cast<float>(data(3, 2)),
 		static_cast<float>(data(0, 3)), static_cast<float>(data(1, 3)), static_cast<float>(data(2, 3)), static_cast<float>(data(3, 3)) };
-	glProgramUniformMatrix4fv(mProg, handle, 1, false, f_data);
+	
+	if (handle)
+	{
+		glProgramUniformMatrix4fv(mProg, handle, 1, false, f_data);
+	}
 }
 
 bool cShader::HasUniform(eUniform unif) const

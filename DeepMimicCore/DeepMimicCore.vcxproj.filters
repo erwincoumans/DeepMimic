@@ -302,7 +302,10 @@
     <ClCompile Include="sim\DeepMimicCharController.cpp">
       <Filter>Source Files\sim</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\bullet3\examples\ThirdPartyLibs\Glew\glew.c">
+    <ClCompile Include="..\..\bullet3\examples\ThirdPartyLibs\glad\gl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\bullet3\examples\Utils\b3Clock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -613,6 +616,7 @@
     <ClInclude Include="sim\DeepMimicCharController.h">
       <Filter>Source Files\sim</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\bullet3\examples\Utils\b3Clock.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="DeepMimicCore.i" />

@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "render/DrawUtil.h"
-#include <GL/freeglut.h>
+
 #define _USE_MATH_DEFINES
 #include "math.h"
 
@@ -289,6 +289,7 @@ tVector cCamera::GetRayCastDir(const tVector& pos) const
 
 void cCamera::MouseClick(int button, int state, double x, double y)
 {
+#if 0
 	mMouseDown = (button == GLUT_RIGHT_BUTTON) && (state == GLUT_DOWN);
 	mMousePos[0] = x;
 	mMousePos[1] = y;
@@ -299,10 +300,12 @@ void cCamera::MouseClick(int button, int state, double x, double y)
 		double zoom = (button == 3) ? -0.05 : 0.05;
 		Zoom(zoom);
 	}
+#endif
 }
 
 void cCamera::MouseMove(double x, double y)
 {
+#if 0
 	if (mMouseDown)
 	{
 		int mouse_mod = glutGetModifiers();
@@ -340,6 +343,7 @@ void cCamera::MouseMove(double x, double y)
 		mMousePos[0] = x;
 		mMousePos[1] = y;
 	}
+#endif
 }
 
 double cCamera::CalcFocalLen() const

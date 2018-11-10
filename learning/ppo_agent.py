@@ -77,10 +77,10 @@ class PPOAgent(PGAgent):
                 self.critic_tf = self._build_net_critic(critic_net_name)
                 
         if (self.a_mean_tf != None):
-            Logger.print('Built actor net: ' + actor_net_name)
+            Logger.print2('Built actor net: ' + actor_net_name)
 
         if (self.critic_tf != None):
-            Logger.print('Built critic net: ' + critic_net_name)
+            Logger.print2('Built critic net: ' + critic_net_name)
         
         self.norm_a_std_tf = self.exp_params_curr.noise * tf.ones(a_size)
         norm_a_noise_tf = self.norm_a_std_tf * tf.random_normal(shape=tf.shape(self.a_mean_tf))

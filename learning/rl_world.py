@@ -53,8 +53,8 @@ class RLWorld(object):
         num_agents = self.env.get_num_agents()
         self.agents = []
 
-        Logger.print('')
-        Logger.print('Num Agents: {:d}'.format(num_agents))
+        Logger.print2('')
+        Logger.print2('Num Agents: {:d}'.format(num_agents))
 
         agent_files = self.arg_parser.parse_strings('agent_files')
         assert(len(agent_files) == num_agents or len(agent_files) == 0)
@@ -72,7 +72,7 @@ class RLWorld(object):
             if curr_agent is not None:
                 curr_agent.output_dir = output_path
                 curr_agent.int_output_dir = int_output_path
-                Logger.print(str(curr_agent))
+                Logger.print2(str(curr_agent))
 
                 if (len(model_files) > 0):
                     curr_model_file = model_files[i]
@@ -80,7 +80,7 @@ class RLWorld(object):
                         curr_agent.load_model(curr_model_file)
 
             self.agents.append(curr_agent)
-            Logger.print('')
+            Logger.print2('')
 
         self.set_enable_training(self.enable_training)
 
@@ -127,7 +127,7 @@ class RLWorld(object):
         return
 
     def _build_agent(self, id, agent_file):
-        Logger.print('Agent {:d}: {}'.format(id, agent_file))
+        Logger.print2('Agent {:d}: {}'.format(id, agent_file))
         if (agent_file == 'none'):
             agent = None
         else:

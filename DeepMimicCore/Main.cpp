@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 
 #include "DeepMimicCore.h"
@@ -7,7 +9,7 @@
 #include "render/DrawUtil.h"
 #include "render/TextureDesc.h"
 #include "OpenGLWindow/SimpleOpenGL3App.h"
-#include "OpenGLWindow/b3Clock.h"
+#include "Utils/b3Clock.h"
 
 static SimpleOpenGL3App* s_app=0;
 static b3Clock s_clock;
@@ -367,8 +369,11 @@ void SetupDraw()
         sOldWheelCB = s_app->m_window->getWheelCallback();
         s_app->m_window->setWheelCallback(MyWheelCallback2);
 #endif
-        sOldResizeCB = s_app->m_window->getResizeCallback();
-        s_app->m_window->setResizeCallback(MyResizeCallback2);
+
+
+	InitFrameBuffers();
+    sOldResizeCB = s_app->m_window->getResizeCallback();
+    s_app->m_window->setResizeCallback(MyResizeCallback2);
 
 //	glutDisplayFunc(Draw);
 //	glutReshapeFunc(Reshape);
@@ -377,7 +382,7 @@ void SetupDraw()
 //	glutMotionFunc(MouseMove);
 //	glutTimerFunc(gDisplayAnimTime, Animate, 0);
 
-	InitFrameBuffers();
+	
 //	Reshape(gWinWidth, gWinHeight);
 	gCore->Reshape(gWinWidth, gWinHeight);
 }

@@ -61,6 +61,7 @@ def update_intermediate_buffer():
     return
 
 def update_world(world, time_elapsed):
+    print("update_world")
     num_substeps = world.env.get_num_update_substeps()
     timestep = time_elapsed / num_substeps
     num_substeps = 1 if (time_elapsed == 0) else num_substeps
@@ -81,6 +82,7 @@ def update_world(world, time_elapsed):
     return
 
 def draw():
+    print("********** draw")
     global reshaping
 
     update_intermediate_buffer()
@@ -92,6 +94,7 @@ def draw():
     return
 
 def reshape(w, h):
+    print("********** reshape")
     global reshaping
     global win_width
     global win_height
@@ -103,6 +106,7 @@ def reshape(w, h):
     return
 
 def step_anim(timestep):
+    print("********** step_anim")
     global animating
     global world
 
@@ -160,6 +164,7 @@ def init_time():
     return
 
 def animate(callback_val):
+    print("********** animate")
     global prev_time
     global updates_per_sec
     global world
@@ -265,15 +270,17 @@ def mouse_move(x, y):
     return
 
 def init_draw():
+    print("init_draw")	 
     glutInit()  
     
-    glutInitContextVersion(3, 2)
+    glutInitContextVersion(4, 2)
     glutInitContextFlags(GLUT_FORWARD_COMPATIBLE)
     glutInitContextProfile(GLUT_CORE_PROFILE)
 
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
     glutInitWindowSize(win_width, win_height)
     glutCreateWindow(b'DeepMimic')
+    time.sleep(2)
     return
     
 def setup_draw():
@@ -290,8 +297,11 @@ def setup_draw():
     return
 
 def build_world(args, enable_draw, playback_speed=1):
+    print("arg_parser")	  
     arg_parser = build_arg_parser(args)
+    print("???????????????DeepMimicEnv")	  
     env = DeepMimicEnv(args, enable_draw)
+    print("!!!!!!!!!!!!!!!!!!!!!!!!RLWorld")	  
     world = RLWorld(env, arg_parser)
     world.env.set_playback_speed(playback_speed)
     return world
@@ -309,9 +319,11 @@ def main():
     print("init_draw")
     init_draw()
     print("end init_draw")
-
+    print("reload")
     reload()
+    print("setup_draw")
     setup_draw()
+    print("draw_main_loop")
     draw_main_loop()
 
     return
