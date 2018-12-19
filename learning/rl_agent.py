@@ -37,8 +37,7 @@ class RLAgent(ABC):
     EXP_ANNEAL_SAMPLES_KEY = "ExpAnnealSamples"
     EXP_PARAM_BEG_KEY = "ExpParamsBeg"
     EXP_PARAM_END_KEY = "ExpParamsEnd"
-    
-    
+        
     def __init__(self, world, id, json_data):
         self.world = world
         self.id = id
@@ -46,7 +45,7 @@ class RLAgent(ABC):
         self._mode = self.Mode.TRAIN
         
         assert self._check_action_space(), \
-            Logger.print("Invalid action space, got {:s}".format(str(self.get_action_space())))
+            Logger.print2("Invalid action space, got {:s}".format(str(self.get_action_space())))
         
         self._enable_training = True
         self.path = Path()
@@ -145,7 +144,7 @@ class RLAgent(ABC):
             elif (self._mode == self.Mode.TEST):
                 self._update_test_return(self.path)
             else:
-                assert False, Logger.print("Unsupported RL agent mode" + str(self._mode))
+                assert False, Logger.print2("Unsupported RL agent mode" + str(self._mode))
 
             self._update_mode()
         return
@@ -371,7 +370,7 @@ class RLAgent(ABC):
         elif (self._mode == self.Mode.TEST):
             self._update_mode_test()
         else:
-            assert False, Logger.print("Unsupported RL agent mode" + str(self._mode))
+            assert False, Logger.print2("Unsupported RL agent mode" + str(self._mode))
         return
 
     def _update_mode_train(self):
@@ -550,9 +549,9 @@ class RLAgent(ABC):
                     self._update_iter(self.iter + 1)
                     self._train_step()
 
-                    Logger.print("Agent " + str(self.id))
+                    Logger.print2("Agent " + str(self.id))
                     self.logger.print_tabular()
-                    Logger.print("") 
+                    Logger.print2("") 
 
                     if (self._enable_output() and curr_iter % self.int_output_iters == 0):
                         self.logger.dump_tabular()
@@ -562,9 +561,9 @@ class RLAgent(ABC):
 
         else:
 
-            Logger.print("Agent " + str(self.id))
-            Logger.print("Samples: " + str(self._total_sample_count))
-            Logger.print("") 
+            Logger.print2("Agent " + str(self.id))
+            Logger.print2("Samples: " + str(self._total_sample_count))
+            Logger.print2("") 
 
             if (self._total_sample_count >= self.init_samples):
                 self.replay_buffer_initialized = True

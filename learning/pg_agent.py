@@ -80,10 +80,10 @@ class PGAgent(TFAgent):
                 self.critic_tf = self._build_net_critic(critic_net_name)
 
         if (self.actor_tf != None):
-            Logger.print('Built actor net: ' + actor_net_name)
+            Logger.print2('Built actor net: ' + actor_net_name)
 
         if (self.critic_tf != None):
-            Logger.print('Built critic net: ' + critic_net_name)
+            Logger.print2('Built critic net: ' + critic_net_name)
 
         return
 

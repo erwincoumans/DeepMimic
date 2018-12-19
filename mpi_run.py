@@ -12,10 +12,10 @@ def main():
     num_workers = arg_parser.parse_int('num_workers', 1)
     assert(num_workers > 0)
 
-    Logger.print('Running with {:d} workers'.format(num_workers))
+    Logger.print2('Running with {:d} workers'.format(num_workers))
     cmd = 'mpiexec -n {:d} python DeepMimic_Optimizer.py '.format(num_workers)
     cmd += ' '.join(args)
-    Logger.print('cmd: ' + cmd)
+    Logger.print2('cmd: ' + cmd)
     subprocess.call(cmd, shell=True)
     return
 

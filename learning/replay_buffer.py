@@ -118,7 +118,7 @@ class ReplayBuffer(object):
                 self.total_count += n + 1
                 start_idx = idx[0]
             else:
-                Logger.print('Invalid path data value detected')
+                Logger.print2('Invalid path data value detected')
         
         return start_idx
 

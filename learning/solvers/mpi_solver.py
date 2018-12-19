@@ -39,7 +39,7 @@ class MPISolver(Solver):
 
     def update_flatgrad(self, flat_grad, grad_scale=1.0):
         if self.iter % self.CHECK_SYNC_ITERS == 0:
-            assert self.check_synced(), Logger.print('Network parameters desynchronized')
+            assert self.check_synced(), Logger.print2('Network parameters desynchronized')
         
         if grad_scale != 1.0:
             flat_grad *= grad_scale

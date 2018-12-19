@@ -61,7 +61,7 @@ def update_intermediate_buffer():
     return
 
 def update_world(world, time_elapsed):
-    print("update_world")
+    
     num_substeps = world.env.get_num_update_substeps()
     timestep = time_elapsed / num_substeps
     num_substeps = 1 if (time_elapsed == 0) else num_substeps
@@ -82,7 +82,7 @@ def update_world(world, time_elapsed):
     return
 
 def draw():
-    print("********** draw")
+    
     global reshaping
 
     update_intermediate_buffer()
@@ -94,7 +94,7 @@ def draw():
     return
 
 def reshape(w, h):
-    print("********** reshape")
+    
     global reshaping
     global win_width
     global win_height
@@ -106,7 +106,7 @@ def reshape(w, h):
     return
 
 def step_anim(timestep):
-    print("********** step_anim")
+    
     global animating
     global world
 
@@ -164,7 +164,7 @@ def init_time():
     return
 
 def animate(callback_val):
-    print("********** animate")
+    
     global prev_time
     global updates_per_sec
     global world
@@ -260,17 +260,19 @@ def keyboard(key, x, y):
     return
 
 def mouse_click(button, state, x, y):
+    
     world.env.mouse_click(button, state, x, y)
     glutPostRedisplay()
 
 def mouse_move(x, y):
+    
     world.env.mouse_move(x, y)
     glutPostRedisplay()
     
     return
 
 def init_draw():
-    print("init_draw")	 
+    
     glutInit()  
     
     glutInitContextVersion(4, 2)
@@ -297,11 +299,11 @@ def setup_draw():
     return
 
 def build_world(args, enable_draw, playback_speed=1):
-    print("arg_parser")	  
+    
     arg_parser = build_arg_parser(args)
-    print("???????????????DeepMimicEnv")	  
+    
     env = DeepMimicEnv(args, enable_draw)
-    print("!!!!!!!!!!!!!!!!!!!!!!!!RLWorld")	  
+    
     world = RLWorld(env, arg_parser)
     world.env.set_playback_speed(playback_speed)
     return world
@@ -316,14 +318,13 @@ def main():
 
     # Command line arguments
     args = sys.argv[1:]
-    print("init_draw")
+    
     init_draw()
-    print("end init_draw")
-    print("reload")
+    
     reload()
-    print("setup_draw")
+    
     setup_draw()
-    print("draw_main_loop")
+    
     draw_main_loop()
 
     return

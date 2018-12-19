@@ -38,7 +38,7 @@ class Normalizer(object):
             x = np.array([[x]])
 
         assert x.shape[-1] == size, \
-            Logger.print('Normalizer shape mismatch, expecting size {:d}, but got {:d}'.format(size, x.shape[-1]))
+            Logger.print2('Normalizer shape mismatch, expecting size {:d}, but got {:d}'.format(size, x.shape[-1]))
         x = np.reshape(x, [-1, size])
 
         self.new_count += x.shape[0]
@@ -53,7 +53,7 @@ class Normalizer(object):
 
         new_total = self.count + new_count
         if (self.count // self.CHECK_SYNC_COUNT != new_total // self.CHECK_SYNC_COUNT):
-            assert self.check_synced(), Logger.print('Normalizer parameters desynchronized')
+            assert self.check_synced(), Logger.print2('Normalizer parameters desynchronized')
 
         if new_count > 0:
             new_mean = self._process_group_data(new_sum / new_count, self.mean)
@@ -85,7 +85,7 @@ class Normalizer(object):
             std = np.array([std])
 
         assert len(mean) == size and len(std) == size, \
-            Logger.print('Normalizer shape mismatch, expecting size {:d}, but got {:d} and {:d}'.format(size, len(mean), len(std)))
+            Logger.print2('Normalizer shape mismatch, expecting size {:d}, but got {:d} and {:d}'.format(size, len(mean), len(std)))
         
         self.mean = mean
         self.std = std
