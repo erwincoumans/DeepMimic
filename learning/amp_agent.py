@@ -123,7 +123,7 @@ class AMPAgent(PPOAgent):
                 self._disc_logits_agent_tf = self._build_disc_net(disc_net_name, self._disc_agent_inputs, disc_init_output_scale, reuse=True)
                 
         if (self._disc_logits_expert_tf != None):
-            Logger.print("Built discriminator net: " + disc_net_name)
+            Logger.print2("Built discriminator net: " + disc_net_name)
 
         self._disc_prob_agent_tf = tf.sigmoid(self._disc_logits_agent_tf)
         self._abs_logit_agent_tf = tf.reduce_mean(tf.abs(self._disc_logits_agent_tf))
