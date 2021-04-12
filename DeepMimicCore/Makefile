@@ -16,6 +16,7 @@ INC = -I./ \
 	-I$(EIGEN_DIR) \
 	-I$(BULLET_INC_DIR)
 
+
 LIBS =  -L. -lOpenGL_Window_gmake_x64_release -lBullet3Common_gmake_x64_release -framework OpenGL -framework Cocoa -lglut -lBulletDynamics -lBulletCollision -lLinearMath
 
 CC = clang++

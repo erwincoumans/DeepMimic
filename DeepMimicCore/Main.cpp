@@ -134,6 +134,11 @@ void Update(double time_elapsed)
 				double r = gCore->CalcReward(id);
 				++gSampleCount;
 
+				if (gCore->GetTime() > 0)
+				{
+					gCore->RecordAMPObsAgent(id);
+				}
+
 				std::vector<double> action = std::vector<double>(gCore->GetActionSize(id), 0);
 				gCore->SetAction(id, action);
 			}
@@ -348,6 +353,7 @@ void InitFrameBuffers(void)
 
 void InitDraw(int argc, char** argv)
 {
+
 	printf("InitDraw!\n");
 	s_app = new SimpleOpenGL3App("DeepMimic", gWinWidth, gWinHeight);
 	printf("Finished InitDraw\n");

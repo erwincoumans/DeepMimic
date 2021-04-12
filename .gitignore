@@ -13,7 +13,10 @@
 *.ipdb
 *.pyd
 *_wrap.cpp
-*.htm
+*.o
+*.cxx
+*.so
+
 
 .vs/
 __pycache__/
@@ -26,5 +29,6 @@ lib/
 external/
 Backup/
 data/intermediate/
+DeepMimicCore/objs/
 
 DeepMimicCore/DeepMimicCore.py

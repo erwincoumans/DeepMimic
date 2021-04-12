@@ -30,47 +30,47 @@
     <ProjectGuid>{43011113-B968-462C-B99A-539E3E98BC15}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TerrainRL</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>DeepMimicCore</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Swig|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Swig|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -143,14 +143,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;WIN32;_WINDOWS;FREEGLUT_STATIC;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);e:\develop\bullet3\src;..\..\..\library\;E:\develop\eigen;E:\develop\bullet3\examples\ThirdPartyLibs\glad;E:\develop\bullet3\src;E:\develop\bullet3\examples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);d:\dev\bullet3\src;..\..\..\library\;D:\dev\bullet3\examples\ThirdPartyLibs;d:\dev\bullet3\examples\ThirdPartyLibs\glad;d:\dev\bullet3\examples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\..\library\Bullet3\build3\lib\Debug;E:\develop\bullet3\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;BulletCollision_vs2010_x64_debug.lib;BulletDynamics_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;OpenGL_Window_vs2010_x64_debug.lib;Bullet3Common_vs2010_x64_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\dev\bullet3\build_cmake\lib\Debug;E:\develop\bullet3\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;OpenGLWindow_Debug.lib;Bullet3Common_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -199,9 +199,9 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;WIN32;_WINDOWS;FREEGLUT_STATIC;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);..\..\..\library\Bullet3\src;..\..\..\library\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);d:\dev\bullet3\src;..\..\..\library\;D:\dev\bullet3\examples\ThirdPartyLibs;d:\dev\bullet3\examples\ThirdPartyLibs\glad;d:\dev\bullet3\examples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -209,8 +209,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\..\library\Bullet3\build3\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\dev\bullet3\build_cmake\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;BulletCollision.lib;BulletDynamics.lib;LinearMath.lib;OpenGLWindow.lib;Bullet3Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Swig|x64'">
@@ -223,7 +223,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);e:\develop\bullet3\src;..\..\..\library\;E:\develop\eigen;E:\develop\bullet3\examples\ThirdPartyLibs\glad;E:\develop\bullet3\src;E:\develop\bullet3\examples;..\..\..\library\Bullet3\src;..\..\..\library\;$(PYTHON_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);d:\dev\bullet3\src;..\..\..\library\;d:\dev\bullet3\examples;..\..\..\library\Bullet3\src;$(PYTHON_INCLUDE);d:\dev\bullet3\examples\ThirdPartyLibs\glad;d:\dev\bullet3\examples\ThirdPartyLibs;c:\python38\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -231,8 +231,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\python-3.5.3.amd64\libs;E:\develop\bullet3\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;BulletCollision_vs2010_x64_release.lib;BulletDynamics_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;OpenGL_Window_vs2010_x64_release.lib;Bullet3Common_vs2010_x64_release.lib;python3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\python38\libs;D:\dev\bullet3\build_cmake\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;BulletCollision.lib;BulletDynamics.lib;LinearMath.lib;OpenGLWindow.lib;Bullet3Common.lib;python3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(ProjectDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -240,9 +240,13 @@
     <ClCompile Include="..\..\bullet3\examples\ThirdPartyLibs\glad\gl.c" />
     <ClCompile Include="..\..\bullet3\examples\Utils\b3Clock.cpp" />
     <ClCompile Include="anim\Character.cpp" />
+    <ClCompile Include="anim\ClipsController.cpp" />
     <ClCompile Include="anim\KinCharacter.cpp" />
+    <ClCompile Include="anim\KinController.cpp" />
+    <ClCompile Include="anim\KinCtrlBuilder.cpp" />
     <ClCompile Include="anim\KinTree.cpp" />
     <ClCompile Include="anim\Motion.cpp" />
+    <ClCompile Include="anim\MotionController.cpp" />
     <ClCompile Include="anim\Shape.cpp" />
     <ClCompile Include="DeepMimicCore_wrap.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -273,17 +277,29 @@
     <ClCompile Include="render\TextureUtil.cpp" />
     <ClCompile Include="render\VertexBuffer.cpp" />
     <ClCompile Include="scenes\DrawRLScene.cpp" />
+    <ClCompile Include="scenes\DrawSceneDribbleAMP.cpp" />
+    <ClCompile Include="scenes\DrawSceneHeadingAMP.cpp" />
+    <ClCompile Include="scenes\DrawSceneHeadingAMPGetup.cpp" />
     <ClCompile Include="scenes\DrawSceneImitate.cpp" />
+    <ClCompile Include="scenes\DrawSceneImitateAMP.cpp" />
     <ClCompile Include="scenes\DrawSceneKinChar.cpp" />
     <ClCompile Include="scenes\DrawSceneSimChar.cpp" />
+    <ClCompile Include="scenes\DrawSceneStrikeAMP.cpp" />
+    <ClCompile Include="scenes\DrawSceneTargetAMP.cpp" />
     <ClCompile Include="scenes\RLScene.cpp" />
     <ClCompile Include="scenes\RLSceneSimChar.cpp" />
+    <ClCompile Include="scenes\SceneDribbleAMP.cpp" />
+    <ClCompile Include="scenes\SceneHeadingAMP.cpp" />
+    <ClCompile Include="scenes\SceneHeadingAMPGetup.cpp" />
     <ClCompile Include="scenes\SceneImitate.cpp" />
+    <ClCompile Include="scenes\SceneImitateAMP.cpp" />
     <ClCompile Include="scenes\SceneKinChar.cpp" />
     <ClCompile Include="scenes\Scene.cpp" />
     <ClCompile Include="scenes\DrawScene.cpp" />
     <ClCompile Include="scenes\SceneBuilder.cpp" />
     <ClCompile Include="scenes\SceneSimChar.cpp" />
+    <ClCompile Include="scenes\SceneStrikeAMP.cpp" />
+    <ClCompile Include="scenes\SceneTargetAMP.cpp" />
     <ClCompile Include="sim\AgentRegistry.cpp" />
     <ClCompile Include="sim\CharController.cpp" />
     <ClCompile Include="sim\ExpPDController.cpp" />
@@ -324,6 +340,7 @@
     <ClCompile Include="DeepMimicCore.cpp" />
     <ClCompile Include="util\Annealer.cpp" />
     <ClCompile Include="util\ArgParser.cpp" />
+    <ClCompile Include="util\DynamicTimeWarper.cpp" />
     <ClCompile Include="util\FileUtil.cpp" />
     <ClCompile Include="util\IndexManager.cpp" />
     <ClCompile Include="util\JsonUtil.cpp" />
@@ -338,9 +355,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\bullet3\examples\Utils\b3Clock.h" />
     <ClInclude Include="anim\Character.h" />
+    <ClInclude Include="anim\ClipsController.h" />
     <ClInclude Include="anim\KinCharacter.h" />
+    <ClInclude Include="anim\KinController.h" />
+    <ClInclude Include="anim\KinCtrlBuilder.h" />
     <ClInclude Include="anim\KinTree.h" />
     <ClInclude Include="anim\Motion.h" />
+    <ClInclude Include="anim\MotionController.h" />
     <ClInclude Include="anim\Shape.h" />
     <ClInclude Include="render\Camera.h" />
     <ClInclude Include="render\DrawCharacter.h" />
@@ -366,17 +387,29 @@
     <ClInclude Include="render\TextureUtil.h" />
     <ClInclude Include="render\VertexBuffer.h" />
     <ClInclude Include="scenes\DrawRLScene.h" />
+    <ClInclude Include="scenes\DrawSceneDribbleAMP.h" />
+    <ClInclude Include="scenes\DrawSceneHeadingAMP.h" />
+    <ClInclude Include="scenes\DrawSceneHeadingAMPGetup.h" />
     <ClInclude Include="scenes\DrawSceneImitate.h" />
+    <ClInclude Include="scenes\DrawSceneImitateAMP.h" />
     <ClInclude Include="scenes\DrawSceneKinChar.h" />
     <ClInclude Include="scenes\DrawSceneSimChar.h" />
+    <ClInclude Include="scenes\DrawSceneStrikeAMP.h" />
+    <ClInclude Include="scenes\DrawSceneTargetAMP.h" />
     <ClInclude Include="scenes\RLScene.h" />
     <ClInclude Include="scenes\RLSceneSimChar.h" />
+    <ClInclude Include="scenes\SceneDribbleAMP.h" />
+    <ClInclude Include="scenes\SceneHeadingAMP.h" />
+    <ClInclude Include="scenes\SceneHeadingAMPGetup.h" />
     <ClInclude Include="scenes\SceneImitate.h" />
+    <ClInclude Include="scenes\SceneImitateAMP.h" />
     <ClInclude Include="scenes\SceneKinChar.h" />
     <ClInclude Include="scenes\Scene.h" />
     <ClInclude Include="scenes\DrawScene.h" />
     <ClInclude Include="scenes\SceneBuilder.h" />
     <ClInclude Include="scenes\SceneSimChar.h" />
+    <ClInclude Include="scenes\SceneStrikeAMP.h" />
+    <ClInclude Include="scenes\SceneTargetAMP.h" />
     <ClInclude Include="sim\ActionSpace.h" />
     <ClInclude Include="sim\AgentRegistry.h" />
     <ClInclude Include="sim\CharController.h" />
@@ -419,6 +452,7 @@
     <ClInclude Include="util\Annealer.h" />
     <ClInclude Include="util\ArgParser.h" />
     <ClInclude Include="util\CircularBuffer.h" />
+    <ClInclude Include="util\DynamicTimeWarper.h" />
     <ClInclude Include="util\FileUtil.h" />
     <ClInclude Include="util\IndexBuffer.h" />
     <ClInclude Include="util\IndexManager.h" />
@@ -450,11 +484,7 @@ echo SWIG_DIR: %SWIG_DIR%
 echo on
 $(SWIG_DIR)\swig.exe -c++ -python -o $(ProjectName)_wrap.cpp  $(ProjectName).i</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Swig|Win32'">$(ProjectName)_wrap.cxx;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Swig|x64'">echo PYTHON_INCLUDE: %PYTHON_INCLUDE%
-echo PYTHON_LIB: %PYTHON_LIB%
-echo SWIG_DIR: %SWIG_DIR%
-echo on
-$(SWIG_DIR)\swig.exe -c++ -python -o $(ProjectName)_wrap.cpp  $(ProjectName).i</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Swig|x64'">C:\Python38\swigwin-4.0.0\swig.exe -c++ -python -o $(ProjectName)_wrap.cpp  $(ProjectName).i</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Swig|x64'">$(ProjectName)_wrap.cxx;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
